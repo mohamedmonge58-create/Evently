@@ -1,0 +1,62 @@
+name: evently
+description: "A new Flutter project."
+publish_to: 'none'
+version: 1.0.0+1
+
+environment:
+  sdk: ^3.12.2
+
+dependencies:
+  flutter:
+    sdk: flutter
+
+  cupertino_icons: ^1.0.8
+  flutter_svg: ^2.3.0
+  introduction_screen: ^4.0.0
+  location: ^10.0.2
+  provider: ^6.1.5+1
+  calendar_date_picker2: ^3.0.0
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+
+
+  flutter_lints: ^6.0.0
+
+
+
+  flutter_gen_runner: ^5.8.0
+  build_runner: ^2.4.13
+
+flutter_gen:
+  output: lib/core/config/gen/
+  integrations:
+    image: true
+    flutter_svg: true
+
+flutter:
+
+
+  uses-material-design: true
+
+  assets:
+     - assets/images/
+     - assets/icons/
+
+
+
+  fonts:
+    - family: Poppins
+      fonts:
+        - asset: assets/fonts/Poppins-Bold.ttf
+          weight: 700
+
+        - asset: assets/fonts/Poppins-Regular.ttf
+          weight: 400
+
+        - asset: assets/fonts/Poppins-SemiBold.ttf
+          weight: 600
+
+        - asset: assets/fonts/Poppins-Medium.ttf
+          weight: 500
