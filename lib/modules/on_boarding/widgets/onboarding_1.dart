@@ -30,13 +30,12 @@ class _Onboarding1State extends State<Onboarding1> {
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
     return Consumer<SettingsProvider>(
-      builder: ( context, appProvider , child) => Padding(
+      builder: (context, appProvider, child) => Padding(
         padding: const EdgeInsets.all(16),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Text(            appProvider.locationMessage,
-            ),
+            Text(appProvider.locationMessage),
             SizedBox(height: 16),
             Center(child: Image.asset(AppAssets.hotTrending)),
             PageIndicator(currentPage: widget.currentPage, pageCount: 3),
@@ -51,7 +50,6 @@ class _Onboarding1State extends State<Onboarding1> {
               "Dive into a world of events crafted to fit your unique interests. Whether you're into live music, art workshops, professional networking, or simply discovering new experiences, we have something for everyone. Our curated recommendations will help you explore, connect, and make the most of every opportunity around you.",
               style: theme.textTheme.bodyLarge,
             ),
-            SizedBox(height: 16),
 
             // TextButton(onPressed: (){
             //

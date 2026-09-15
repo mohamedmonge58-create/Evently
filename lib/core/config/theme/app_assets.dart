@@ -42,4 +42,29 @@ abstract class AppAssets {
   static const String cakeIcon = "assets/icons/birthday-cake.svg";
   static const String clockIcon = "assets/icons/clock.svg";
 
+  static const String smsIcon = "assets/icons/sms.svg";
+  static const String lockIcon = "assets/icons/lock.svg";
+  static const String eyeIcon = "assets/icons/eye-slash.svg";
+  static const String userIcon = "assets/icons/user.svg";
+
+
+
+  static const String googleImage = "assets/images/image 6.png";
+
+  static const String forgetPassword = "assets/images/change-setting.png";
+
+
+  static const String selectedHome = "assets/icons/selected_home.svg";
+  static const String unSelectedHome = "assets/icons/unselected_home.svg";
+  static const String selectedHeart = "assets/icons/selected_heart.svg";
+  static const String unSelectedHeart = "assets/icons/unselected_heart.svg";
+  static const String selectedUser = "assets/icons/selected_user.svg";
+  static const String unSelectedUser = "assets/icons/unselected_user.svg";
+  static const String searchIcon = "assets/icons/search-normal.svg";
+  static const String profilePic = "assets/images/Profile pic.png";
+  static const String arrowRight = "assets/icons/arrow-right.svg";
+  static const String logOut = "assets/icons/logout-02.svg";
+
+
+
 }

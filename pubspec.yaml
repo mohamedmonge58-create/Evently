@@ -16,6 +16,11 @@ dependencies:
   location: ^10.0.2
   provider: ^6.1.5+1
   calendar_date_picker2: ^3.0.0
+  image_picker: ^1.2.3
+  flutter_gen: ^5.15.0
+  firebase_core: ^4.14.0
+  google_sign_in: ^7.2.0
+  flutter_switch: ^0.3.2
 
 dev_dependencies:
   flutter_test:
