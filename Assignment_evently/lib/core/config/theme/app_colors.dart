@@ -4,6 +4,7 @@ abstract class AppColors {
 
   static const Color mainColorLight = Color(0xff0E3A99);
   static const Color mainColorDark = Color(0xff457AED);
+  static const Color disabled = Color(0xffB9B9B9);
 
   static const Color scaffoldLight = Color(0xffB9B9B9);
   static const Color scaffoldDark = Color(0xffB9B9B9);

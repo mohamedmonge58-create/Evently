@@ -51,6 +51,14 @@ class _LoginViewState extends State<LoginView> {
               TextFormField(
                 keyboardType: TextInputType.emailAddress,
                 cursorColor: theme.primaryColor,
+                style:  TextStyle(
+                  color: provider.currentThemeMode ==
+                      ThemeMode.light
+                      ? Colors.black
+                      : Colors.white,
+                  fontSize: 16,
+                  fontFamily: 'Poppins',
+                ),
                 decoration: InputDecoration(
                   hintText: "Enter your email",
                   hintStyle: TextStyle(
@@ -94,6 +102,14 @@ class _LoginViewState extends State<LoginView> {
                 keyboardType: TextInputType.visiblePassword,
                 cursorColor: theme.primaryColor,
                 obscureText: isObscure,
+                style:  TextStyle(
+                  color: provider.currentThemeMode ==
+                      ThemeMode.light
+                      ? Colors.black
+                      : Colors.white,
+                  fontSize: 16,
+                  fontFamily: 'Poppins',
+                ),
                 decoration: InputDecoration(
                   hintText: "Enter your password",
                   hintStyle: TextStyle(

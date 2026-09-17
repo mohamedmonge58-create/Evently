@@ -1,9 +1,12 @@
+import 'package:cloud_firestore/cloud_firestore.dart' hide Settings;
+import 'package:evently/core/utils/firebase_cloud_service.dart';
 import 'package:evently/data_source/category_data_source.dart';
-import 'package:evently/models/category_data.dart';
 import 'package:evently/modules/home/widget/event_card_item.dart';
 import 'package:evently/modules/home/widget/header_section.dart';
 import 'package:evently/modules/home/widget/tab_bar_item.dart';
 import 'package:flutter/material.dart';
+
+import '../../models/event_data.dart';
 
 class HomeView extends StatefulWidget {
   const HomeView({super.key});
@@ -14,11 +17,12 @@ class HomeView extends StatefulWidget {
 
 class _HomeViewState extends State<HomeView> {
   int _selectedIndex = 0;
+
   @override
   Widget build(BuildContext context) {
     return SafeArea(
       child: Padding(
-        padding: const EdgeInsets.all(16.0),
+        padding:  EdgeInsets.all(16.0),
         child: Column(
           spacing: 24,
           children: [
@@ -49,14 +53,43 @@ class _HomeViewState extends State<HomeView> {
                     .toList(),
               ),
             ),
-            Expanded(
-              child: ListView.separated(
-                itemBuilder: (context, index) => EventCardItem(),
+            StreamBuilder<QuerySnapshot<EventData>>(
+              stream: FirebaseCloudService.getRealtimeAllEventData(),
 
-                separatorBuilder: (context, index) => SizedBox(height: 16),
+              builder: (context, snapshot) {
+                if (snapshot.connectionState == ConnectionState.waiting) {
+                  return Center(child: CircularProgressIndicator());
+                }
+                if (snapshot.hasError) {
+                  return Center(child: Text(snapshot.error.toString()));
+                }
 
-                itemCount: 10,
-              ),
+                List<EventData> eventData =
+                    snapshot.data?.docs.map((doc) => doc.data()).toList() ??
+                    [];
+
+                final selectedCategoryId =
+                    CategoryDataSource.categories[_selectedIndex].id;
+
+                final filteredEvents = eventData
+                    .where((event) => event.eventID == selectedCategoryId)
+                    .toList();
+
+                if (filteredEvents.isEmpty) {
+                  return const Center(child: Text('Event is empty'));
+                }
+
+                return Expanded(
+                  child: ListView.separated(
+                    itemBuilder: (context, index) => EventCardItem(
+                      eventData: filteredEvents[index],
+                    ),
+
+                    separatorBuilder: (context, index) => SizedBox(height: 16),
+                    itemCount: filteredEvents.length,
+                  ),
+                );
+              },
             ),
           ],
         ),

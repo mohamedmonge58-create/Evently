@@ -6,6 +6,9 @@ import 'package:evently/modules/on_boarding/widgets/onboarding_1.dart';
 import 'package:evently/modules/on_boarding/widgets/onboarding_2.dart';
 import 'package:evently/modules/on_boarding/widgets/onboarding_3.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+
+import '../../core/providerrr/settings.dart';
 
 class OnboardingHome extends StatefulWidget {
   const OnboardingHome({super.key});
@@ -41,6 +44,8 @@ class _OnboardingHomeState extends State<OnboardingHome> {
 
   @override
   Widget build(BuildContext context) {
+    final provider = Provider.of<Settings>(context);
+
     final theme = Theme.of(context);
 
     return Scaffold(
@@ -63,13 +68,22 @@ class _OnboardingHomeState extends State<OnboardingHome> {
                     width: 32,
                     height: 40,
                     decoration: BoxDecoration(
-                      color: Colors.white,
+                      color: provider.currentThemeMode == ThemeMode.light
+                          ? AppColors.inputsLight
+                          : AppColors.inputsDark,
                       borderRadius: BorderRadius.circular(8),
+                      border: Border.all(
+                        color: provider.currentThemeMode == ThemeMode.light
+                            ? AppColors.strokeLight
+                            : AppColors.strokeDark,
+                      ),
                     ),
                     child: Icon(
                       Icons.arrow_back_ios_rounded,
                       size: 24,
-                      color: AppColors.mainColorLight,
+                      color: provider.currentThemeMode == ThemeMode.light
+                          ? AppColors.mainColorLight
+                          : AppColors.inputsLight,
                     ),
                   ),
                 ),
@@ -112,13 +126,22 @@ class _OnboardingHomeState extends State<OnboardingHome> {
                         vertical: 5.5,
                       ),
                       decoration: BoxDecoration(
-                        color: Colors.white,
+                        color: provider.currentThemeMode == ThemeMode.light
+                            ? AppColors.inputsLight
+                            : AppColors.inputsDark,
                         borderRadius: BorderRadius.circular(8),
+                        border: BoxBorder.all(
+                          color: provider.currentThemeMode == ThemeMode.light
+                              ? AppColors.strokeLight
+                              : AppColors.strokeDark,
+                        ),
                       ),
                       child: Text(
                         "Skip",
                         style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-                          color: AppColors.mainColorLight,
+                          color: provider.currentThemeMode == ThemeMode.light
+                              ? AppColors.mainColorLight
+                              : AppColors.inputsLight,
                           fontWeight: FontWeight.w400,
                         ),
                       ),

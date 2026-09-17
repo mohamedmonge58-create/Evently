@@ -1,26 +1,21 @@
 import 'package:evently/core/config/theme/app_colors.dart';
+import 'package:evently/data_source/category_data_source.dart';
 import 'package:flutter/material.dart';
 
-class CategorySelector extends StatefulWidget {
-  const CategorySelector({super.key});
+class CategorySelector extends StatelessWidget {
+  final int selectedIndex;
+  final ValueChanged<int> onCategoryChanged;
 
-  @override
-  State<CategorySelector> createState() => _CategorySelectorState();
-}
-
-class _CategorySelectorState extends State<CategorySelector> {
-  int selectedIndex = 0;
-
-  final List<Map<String, dynamic>> categories = [
-    {'title': 'Book club', 'icon': Icons.menu_book_rounded},
-    {'title': 'Sport', 'icon': Icons.directions_bike_outlined},
-    {'title': 'Birthday', 'icon': Icons.cake_outlined},
-    {'title': 'Meeting', 'icon': Icons.groups_outlined},
-    {'title': 'Exhibition', 'icon': Icons.art_track_outlined},
-  ];
+  const CategorySelector({
+    super.key,
+    required this.selectedIndex,
+    required this.onCategoryChanged,
+  });
 
   @override
   Widget build(BuildContext context) {
+    final categories = CategoryDataSource.categories;
+
     return SizedBox(
       height: 40,
       child: ListView.separated(
@@ -32,13 +27,10 @@ class _CategorySelectorState extends State<CategorySelector> {
         },
         itemBuilder: (context, index) {
           final isSelected = selectedIndex == index;
+          final category = categories[index];
 
           return GestureDetector(
-            onTap: () {
-              setState(() {
-                selectedIndex = index;
-              });
-            },
+            onTap: () => onCategoryChanged(index),
             child: AnimatedContainer(
               duration: const Duration(milliseconds: 200),
               padding: const EdgeInsets.symmetric(horizontal: 16),
@@ -55,7 +47,7 @@ class _CategorySelectorState extends State<CategorySelector> {
                 mainAxisSize: MainAxisSize.min,
                 children: [
                   Icon(
-                    categories[index]['icon'],
+                    category.icon,
                     size: 24,
                     color: isSelected ? Colors.white : AppColors.mainColorLight,
                   ),
@@ -63,7 +55,7 @@ class _CategorySelectorState extends State<CategorySelector> {
                   const SizedBox(width: 8),
 
                   Text(
-                    categories[index]['title'],
+                    category.name,
                     style: TextStyle(
                       fontSize: 18,
                       fontWeight: FontWeight.w500,

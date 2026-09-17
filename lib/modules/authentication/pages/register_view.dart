@@ -52,6 +52,14 @@ class _RegisterViewState extends State<RegisterView> {
               TextFormField(
                 keyboardType: TextInputType.emailAddress,
                 cursorColor: theme.primaryColor,
+                style:  TextStyle(
+                  color: provider.currentThemeMode ==
+                      ThemeMode.light
+                      ? Colors.black
+                      : Colors.white,
+                  fontSize: 16,
+                  fontFamily: 'Poppins',
+                ),
                 decoration: InputDecoration(
                   hintText: "Enter your name",
                   hintStyle: TextStyle(
@@ -95,6 +103,14 @@ class _RegisterViewState extends State<RegisterView> {
               TextFormField(
                 keyboardType: TextInputType.emailAddress,
                 cursorColor: theme.primaryColor,
+                style:  TextStyle(
+                  color: provider.currentThemeMode ==
+                      ThemeMode.light
+                      ? Colors.black
+                      : Colors.white,
+                  fontSize: 16,
+                  fontFamily: 'Poppins',
+                ),
                 decoration: InputDecoration(
                   hintText: "Enter your email",
                   hintStyle: TextStyle(
@@ -138,6 +154,14 @@ class _RegisterViewState extends State<RegisterView> {
                 keyboardType: TextInputType.visiblePassword,
                 cursorColor: theme.primaryColor,
                 obscureText: isObscure,
+                style:  TextStyle(
+                  color: provider.currentThemeMode ==
+                      ThemeMode.light
+                      ? Colors.black
+                      : Colors.white,
+                  fontSize: 16,
+                  fontFamily: 'Poppins',
+                ),
                 decoration: InputDecoration(
                   hintText: "Enter your password",
                   hintStyle: TextStyle(
@@ -203,6 +227,14 @@ class _RegisterViewState extends State<RegisterView> {
                 keyboardType: TextInputType.visiblePassword,
                 cursorColor: theme.primaryColor,
                 obscureText: isObscure,
+                style:  TextStyle(
+                  color: provider.currentThemeMode ==
+                      ThemeMode.light
+                      ? Colors.black
+                      : Colors.white,
+                  fontSize: 16,
+                  fontFamily: 'Poppins',
+                ),
 
                 decoration: InputDecoration(
                   hintText: "Confirm your password",

@@ -1,3 +1,4 @@
+import 'package:cloud_firestore/cloud_firestore.dart' hide Settings;
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:provider/provider.dart';
@@ -5,6 +6,8 @@ import 'package:provider/provider.dart';
 import '../../core/config/theme/app_assets.dart';
 import '../../core/config/theme/app_colors.dart';
 import '../../core/providerrr/settings.dart';
+import '../../core/utils/firebase_cloud_service.dart';
+import '../../models/event_data.dart';
 import '../home/widget/event_card_item.dart';
 
 class FavouritesView extends StatelessWidget {
@@ -12,6 +15,7 @@ class FavouritesView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+
     final provider = Provider.of<Settings>(context);
     final theme = Theme.of(context);
     return SafeArea(
@@ -63,12 +67,44 @@ class FavouritesView extends StatelessWidget {
               ),
             ),
             SizedBox(height: 16,),
+            StreamBuilder<QuerySnapshot<EventData>>(
+              stream: FirebaseCloudService.getRealtimeFavouriteEventData(
 
-            Expanded(child: ListView.separated(itemBuilder: (context,index)=>EventCardItem(),
+              ),
 
-                separatorBuilder: (context,index)=>SizedBox(height: 16,),
+              builder: (context, snapshot) {
+                if (snapshot.connectionState == ConnectionState.waiting) {
+                  return Center(child: CircularProgressIndicator());
+                }
+                if (snapshot.hasError) {
+                  return Center(child: Text(snapshot.error.toString()));
+                }
+                List<EventData> eventData = snapshot.data!.docs.map(
+                        (data){
+                      return data.data();
+                    }
 
-                itemCount: 10))
+                ).toList() ?? [];
+                if (eventData.isEmpty)
+                  return Center(child: Text('Event is empty'));
+                return Expanded(
+                  child: ListView.separated(
+                    itemBuilder: (context, index) =>
+                        EventCardItem(eventData: eventData[index]),
+
+                    separatorBuilder: (context, index) => SizedBox(height: 16),
+                    itemCount: eventData.length,
+                  ),
+                );
+              },
+            )
+
+
+            // Expanded(child: ListView.separated(itemBuilder: (context,index)=>EventCardItem(),
+            //
+            //     separatorBuilder: (context,index)=>SizedBox(height: 16,),
+            //
+            //     itemCount: 10))
 
           ],
         ),

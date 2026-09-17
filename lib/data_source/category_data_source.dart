@@ -54,4 +54,17 @@ class CategoryDataSource {
 
     
   ];
+
+
+ static CategoryData getCategoriesById  (String eventID) {
+
+
+
+    return categories.firstWhere((element) => element.id == eventID,
+      orElse: () => categories.first,
+
+    );
+
+
+  }
 }

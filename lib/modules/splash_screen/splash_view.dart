@@ -2,7 +2,6 @@ import 'dart:async';
 
 import 'package:evently/core/config/routes/app_routes_name.dart';
 import 'package:evently/core/config/theme/app_assets.dart';
-import 'package:evently/core/config/theme/app_colors.dart';
 import 'package:flutter/material.dart';
 
 class SplashView extends StatefulWidget {
@@ -18,7 +17,7 @@ class _SplashViewState extends State<SplashView> {
     // TODO: implement initState
     super.initState();
     Timer(Duration(seconds: 3), () {
-      Navigator.pushReplacementNamed(context, AppRoutesName.letsStartRoute);
+      Navigator.pushReplacementNamed(context, AppRoutesName.layoutView);
     });
   }
 

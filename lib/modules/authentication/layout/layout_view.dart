@@ -24,6 +24,28 @@ class _LayoutViewState extends State<LayoutView> {
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
     return Scaffold(
+      floatingActionButton: GestureDetector(
+        onTap: () {
+          Navigator.pushNamed(context, '/create_event');
+        },
+        child: Container(
+          width: 48,
+          height: 48,
+          decoration: BoxDecoration(
+            shape: BoxShape.circle,
+            boxShadow: [
+              BoxShadow(
+                color: Color(0xff0E3A99).withOpacity(0.56),
+                blurRadius: 12,
+                offset:  Offset(0, 4),
+              ),
+            ],
+            color: theme.primaryColor
+          ),
+          child: Icon(Icons.add,color: Colors.white,size: 24,),
+        
+        ),
+      ),
       body: _pages[_selectedIndex],
       bottomNavigationBar: BottomNavigationBar(
 

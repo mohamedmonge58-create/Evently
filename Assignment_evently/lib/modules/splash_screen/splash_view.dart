@@ -2,7 +2,6 @@ import 'dart:async';
 
 import 'package:evently/core/config/routes/app_routes_name.dart';
 import 'package:evently/core/config/theme/app_assets.dart';
-import 'package:evently/core/config/theme/app_colors.dart';
 import 'package:flutter/material.dart';
 
 class SplashView extends StatefulWidget {
@@ -18,10 +17,10 @@ class _SplashViewState extends State<SplashView> {
     // TODO: implement initState
     super.initState();
     Timer(Duration(seconds: 3), () {
-
-      Navigator.pushReplacementNamed(context, AppRoutesName.letsStartRoute);
+      Navigator.pushReplacementNamed(context, AppRoutesName.layoutView);
     });
   }
+
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
@@ -33,19 +32,29 @@ class _SplashViewState extends State<SplashView> {
           padding: const EdgeInsets.symmetric(horizontal: 35),
           child: Column(
             children: [
-              Expanded(child: Center(child: Image.asset(AppAssets.eventlyLogo , color: theme.primaryColor,))),
+              Expanded(
+                child: Center(
+                  child: Image.asset(
+                    AppAssets.eventlyLogo,
+                    color: theme.primaryColor,
+                  ),
+                ),
+              ),
               Padding(
                 padding: const EdgeInsets.only(bottom: 30.0),
-                child: Text("Supervised by Mohamed Monge",style: TextStyle(color:theme.dividerColor ,fontSize: 14, fontWeight: FontWeight.bold),),
-              )
+                child: Text(
+                  "Supervised by Mohamed Monge",
+                  style: TextStyle(
+                    color: theme.dividerColor,
+                    fontSize: 14,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+              ),
             ],
           ),
-
         ),
-      )
-
-
-
+      ),
     );
   }
 }

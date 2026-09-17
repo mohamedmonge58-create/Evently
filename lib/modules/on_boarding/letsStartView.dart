@@ -1,6 +1,5 @@
 import 'package:evently/core/config/routes/app_routes_name.dart';
 import 'package:evently/core/config/theme/app_assets.dart';
-import 'package:evently/core/config/theme/app_colors.dart';
 import 'package:evently/modules/on_boarding/widgets/language_selector.dart';
 import 'package:evently/modules/on_boarding/widgets/theme_selector.dart';
 import 'package:flutter/material.dart';

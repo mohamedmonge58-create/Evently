@@ -4,7 +4,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
 class CalenderDate extends StatelessWidget {
-  const CalenderDate({super.key});
+  final String date;
+  final String time;
+
+  const CalenderDate({super.key ,required this.date, required this.time});
 
   @override
   Widget build(BuildContext context) {
@@ -45,7 +48,7 @@ class CalenderDate extends StatelessWidget {
               Padding(
                 padding: const EdgeInsets.only(top: 25.0),
                 child: Text(
-                  "21 January ",
+                  date,
                   style: TextStyle(
                     color: AppColors.mainTextLight,
                     fontSize: 16,
@@ -57,7 +60,7 @@ class CalenderDate extends StatelessWidget {
               Padding(
                 padding: const EdgeInsets.only(top: 8.0),
                 child: Text(
-                  "12:12 PM ",
+                  time,
                   style: TextStyle(
                     color: AppColors.scaffoldLight,
                     fontSize: 16,
