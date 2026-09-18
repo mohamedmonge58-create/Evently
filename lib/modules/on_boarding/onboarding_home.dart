@@ -7,9 +7,8 @@ import 'package:evently/modules/on_boarding/widgets/onboarding_2.dart';
 import 'package:evently/modules/on_boarding/widgets/onboarding_3.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-
 import '../../core/providerrr/settings.dart';
-
+import '../../services/app_preferences.dart';
 class OnboardingHome extends StatefulWidget {
   const OnboardingHome({super.key});
 
@@ -207,8 +206,19 @@ class _OnboardingHomeState extends State<OnboardingHome> {
               width: double.infinity,
               height: 48,
               child: TextButton(
-                onPressed: () {
-                  _nextPage();
+                onPressed:  () async {
+                  if (_currentPage == _pages.length - 1) {
+                    await AppPreferences.completeOnboarding();
+
+                    if (!context.mounted) return;
+
+                    Navigator.pushReplacementNamed(
+                      context,
+                      AppRoutesName.loginRoute,
+                    );
+                  } else {
+                    _nextPage();
+                  }
                 },
                 style: TextButton.styleFrom(padding: EdgeInsets.zero),
                 child: Container(
